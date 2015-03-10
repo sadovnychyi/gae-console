@@ -1,0 +1,3 @@
+include distribute_setup.py
+include gae_console/include.yaml
+include gae_console/console.html
