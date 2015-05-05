@@ -1,10 +1,27 @@
 import os
 import sys
-import logging
+import importlib
 import traceback
 import cStringIO
 from google.appengine.ext.webapp import _template
 from google.appengine.ext import webapp
+from google.appengine.api import lib_config
+
+_config = lib_config.register(
+  'gae_console', {'IMPORTS': {
+    'memcache': 'google.appengine.api.memcache',
+    'modules': 'google.appengine.api.modules',
+    'taskqueue': 'google.appengine.api.taskqueue',
+    'urlfetch': 'google.appengine.api.urlfetch',
+    'ndb': 'google.appengine.ext.ndb',
+    'deferred': 'google.appengine.ext.deferred',
+  }})
+
+for name, module in _config.IMPORTS.items():
+  try:
+    globals().update({name: importlib.import_module(module)})
+  except ImportError:
+    continue
 
 
 def _render(self, template_name, **values):
@@ -17,7 +34,6 @@ class ConsoleHandler(webapp.RequestHandler):
   """Shows our interactive console HTML."""
 
   def get(self):
-    logging.info(self.request.path)
     return _render(self, 'console.html')
 
 

@@ -37,3 +37,22 @@ handlers:
   script: gae_console.application
   login: admin
 ```
+
+# Configuration
+
+You can configure a list of libraries which will be imported by default using apengine_config.py:
+
+```
+gae_console_IMPORTS = {
+  'memcache': 'google.appengine.api.memcache',
+  'modules': 'google.appengine.api.modules',
+  'taskqueue': 'google.appengine.api.taskqueue',
+  'urlfetch': 'google.appengine.api.urlfetch',
+  'ndb': 'google.appengine.ext.ndb',
+  'deferred': 'google.appengine.ext.deferred',
+  'model': 'model',
+}
+```
+
+
+`memcache`, `modules`, `taskqueue`, `urlfetch`, `ndb`, and `deferred` are imported by default.

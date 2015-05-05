@@ -171,8 +171,7 @@ print "Hello, " + nickname
             type: 'post',
             data: {'code': editor.getSession().getValue()},
             success: function(response, textStatus, jqXHR) {
-              $('#output div').html(response)
-              console.log(response);
+              $('#output div').text(response);
             },
             error: function(jqXHR, textStatus, errorThrown) {
               console.error(jqXHR, textStatus, errorThrown);
