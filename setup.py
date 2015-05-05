@@ -9,7 +9,7 @@ import setuptools
 setuptools.setup(
   name='gae-console',
   description=('Powerful Interactive Console for App Engine applications.'),
-  version='0.0.1',
+  version='0.1.0',
   packages=setuptools.find_packages(),
   author='Dmitry Sadovnychyi',
   author_email='gae-console@dmit.ro',
